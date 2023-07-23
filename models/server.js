@@ -10,7 +10,7 @@ class Server{
     }
 conectarDB(){
     mongoose.connect(process.env.MONGODB)
-    .then(() => console.log('Connected! yeah'));
+    .then(() => console.log('Connected! yeaaaaaahh'));
 }
   
 
@@ -20,7 +20,7 @@ conectarDB(){
     }
     escuchar(){
         this.app.listen(process.env.PORT, () => {
-            console.log(`Servidor corriendo en el puerto ${process.env.PORT}`);
+            console.log(`El servidor se encuentra en el puerto ${process.env.PORT}`);
           })
     }
 }   
