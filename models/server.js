@@ -16,10 +16,14 @@ class Server{
         this.routes()
         this.conectarDB()
     }
-conectarDB(){
-    mongoose.connect(process.env.MONGODB)
-    .then(() => console.log('Connected! yeah'));
-}
+    async conectarDB() {
+        try {
+          await mongoose.connect(process.env.MONGODB);
+          console.log('Connected! Yeah');
+        } catch (error) {
+          console.error('Error connecting to the database:', error.message);
+        }
+      }
     routes(){
         this.app.use('/api/conductor',conductor)
         this.app.use('/api/empresa',empresa)
