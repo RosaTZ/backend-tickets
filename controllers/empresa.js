@@ -28,7 +28,7 @@ const httpEmpresa = {
     },
     putEmpresa: async (req, res) => {
         const id = req.body.id;
-        const buscarEmpresa = await Empresa.findOneAndUpdate({_id:id});
+        const buscarEmpresa = await Empresa.findByIdAndUpdate({_id:id});
         if (buscarEmpresa) {
           (buscarEmpresa.nombre = req.body.nombre),
             (buscarEmpresa.direccion = req.body.direccion),

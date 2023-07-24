@@ -16,14 +16,6 @@ class Server{
         this.routes()
         this.conectarDB()
     }
-    // async conectarDB() {
-    //     try {
-    //       await mongoose.connect(process.env.MONGODB);
-    //       console.log('Connected! Yeah');
-    //     } catch (error) {
-    //       console.error('Error connecting to the database:', error.message);
-    //     }
-    //   }
     conectarDB(){
       mongoose.connect(process.env.MONGODB)
       .then(() => console.log('Connected! yeah'))
