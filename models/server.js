@@ -16,14 +16,21 @@ class Server{
         this.routes()
         this.conectarDB()
     }
-    async conectarDB() {
-        try {
-          await mongoose.connect(process.env.MONGODB);
-          console.log('Connected! Yeah');
-        } catch (error) {
-          console.error('Error connecting to the database:', error.message);
-        }
-      }
+    // async conectarDB() {
+    //     try {
+    //       await mongoose.connect(process.env.MONGODB);
+    //       console.log('Connected! Yeah');
+    //     } catch (error) {
+    //       console.error('Error connecting to the database:', error.message);
+    //     }
+    //   }
+    conectarDB(){
+      mongoose.connect(process.env.MONGODB)
+      .then(() => console.log('Connected! yeah'))
+      .catch((err)=>{
+        console.log('Hubo un problema al conectarnos',{err});
+      })
+  }
     routes(){
         this.app.use('/api/conductor',conductor)
         this.app.use('/api/empresa',empresa)
