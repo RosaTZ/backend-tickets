@@ -30,6 +30,9 @@ res.json({buscar})
    putCliente: async(req, res)=>{
     const id =req.params.id;
     const clienteActualizado={
+      cedula:req.body.cedula,
+      nombre:req.body.nombre,
+      apellidos:req.body.apellidos,
       telefono : req.body.telefono
     }
     try {
