@@ -1,19 +1,22 @@
 import mongoose from "mongoose";
 
 const conductorSchema=new mongoose.Schema({
-    cedula:{type:String,require:true,minlength:8,maxlength:10},
-    nombre :{type:String,require:true},
-    apellidos :{type:String,require:true},
-    telefono : {type:String,require:true},
-    licencia : {type:String,require:true},
-    fecha_nacimiento:{type:Date,require:true},
-    direccion : {type:String,require:true},
-    estado_civil : {type:String,require:true},
+    cedula:{type:String},
+    nombre :{type:String},
+    apellidos :{type:String},
+    telefono : {type:String},
+    licencia : {type:String},
+    categoria_licencia:{type:String},
+    fecha_vencimiento:{type:Date},
+    fecha_nacimiento:{type:Date},
+    direccion : {type:String},
+    estado_civil : {type:String},
+    estado:{type:Number,require:true},
     seguro:{
-        tipo_seguro : {type:String,require:true},
-        aseguradora : {type:String,require:true},
-        valor: {type:Number,require:true},
-        descripcion: {type:String}
+        tipo_seguro : {type:String},
+        aseguradora : {type:String},
+        valor: {type:Number},
+        descripcion: {type:String},
     },
     createdAt :{ type : Date , default : Date.now}
 })

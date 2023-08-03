@@ -1,10 +1,11 @@
 import mongoose from "mongoose"
 
 const revisionSchema=new mongoose.Schema({
-    tecnomecanica :{type: Number , require: true},
-    fecha_revision :{type:Date, require: true},
+    tecnomecanica :{type: Date , require: true},
+    fecha_revision :{type:String, require: true},
     fecha_proxima_revision :{type:Date, require: true},
     descripcion : { type : String , require : false , default : "ok"},
+    estado:{type:Number,require:true},
     createdAt :{ type : Date , default : Date.now},
 })
 

@@ -4,12 +4,13 @@ import { Router } from "express"
 
 const router= Router()
 
-  router.get("/", httpAdministrador.getAdministrador)
+  router.post("/",httpAdministrador.postAdministrador)
+
+  // router.post("/login",httpAdministrador.login)
+
+  router.post("/token",httpAdministrador.postAdministradorToken)
   
-  router.get("/:id",httpAdministrador.getAdministradorId)
+  // router.put("/:id",httpAdministrador.putAdministrador)
   
-  router.put("/:id",httpAdministrador.putAdministrador)
-  
-  router.delete("/:id",httpAdministrador.deleteAdministrador)
 
   export default router

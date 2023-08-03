@@ -16,23 +16,25 @@ console.log(buscar);
       res.json({mensaje:`${_id} no encontrado`})
       }
     },
-    putVendedor: async (req, res) => {
-        const id = req.body.id;
-        const buscarVendedor = await Vendedor.findOneAndUpdate({_id:id});
-        if (buscarVendedor) {
-          console.log(buscarVendedor);
-          (buscarVendedor.nombre = req.body.nombre),
-          (buscarVendedor.email = req.body.email)
-          (buscarVendedor.telefono = req.body.telefono),
-          (buscarVendedor.password = req.body.passdword)
-            buscarVendedor.save()
-          res.json({ buscarVendedor });
-        } else {
-          res.json({
-            mensaje: `La ruta: ${id} no se encuentra en la base de datos`,
-          });
+    putVendedor: async (req,res)=>{
+      const id= req.params.id;
+      const vendedorActualizado={
+        nombre : req.body.nombre,
+        email : req.body.email,
+        telefono : req.body.telefono,
+        password : req.body.passdword
+      }
+      try {
+        const buscarVendedor= await Vendedor.findByIdAndUpdate(id,vendedorActualizado);
+        if(buscarVendedor){
+          res.json(buscarVendedor)
+        }else{
+          res.json({"mensaje":`El vendedor con ${id} no se encuentra en la base de datos`})
         }
-      },
+      } catch (error) {
+        res.json({"mensaje":"Error al actualizar el vendedor", error})
+      }
+    },
       deleteVendedor: async (req, res) => {
         const { id } = req.params;
         const eliminado = await Vendedor.findOneAndDelete({ _id: id });

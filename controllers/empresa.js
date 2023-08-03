@@ -4,8 +4,8 @@
 import Empresa from "../models/empresa.js"
 const httpEmpresa = {
     postEmpresa:async (req, res) => {
-      const { nombre,nit, direccion,telefono,propietario} = req.body
-      const empresa = await Empresa({ nombre,nit, direccion,telefono,propietario })
+      const { nombre,nit, direccion,telefono,correo,horario,mision,vision,slogan,servicios} = req.body
+      const empresa = await Empresa({ nombre,nit, direccion,telefono,correo,horario,mision,vision,slogan,servicios })
       await empresa.save()
       res.json({
         empresa
@@ -16,32 +16,39 @@ const httpEmpresa = {
       res.json({buscar})
       console.log(buscar);
     },
-    getEmpresaId:async (req, res) => {
-      const  {id}  = req.params
-      const empresa = await Empresa.findById({ _id: id })
+    getEmpresaNit:async (req, res) => {
+      const  {nit}  = req.params
+      const empresa = await Empresa.find({nit: nit})
       if(empresa){
         console.log(empresa);
         res.json({ empresa })
       }else{
-        res.json({mensaje:`${id} no encontrado`})
+        res.json({mensaje:`${nit} no encontrado`})
       }
     },
     putEmpresa: async (req, res) => {
-        const id = req.body.id;
-        const buscarEmpresa = await Empresa.findOneAndUpdate({_id:id});
+      const id = req.params.id;
+      const empresaActualizada = {
+        nombre: req.body.nombre,
+        direccion: req.body.direccion,
+        telefono: req.body.telefono,
+        propietario: req.body.propietario,
+      };
+    
+      try {
+        const buscarEmpresa = await Empresa.findByIdAndUpdate(id, empresaActualizada);
         if (buscarEmpresa) {
-          (buscarEmpresa.nombre = req.body.nombre),
-            (buscarEmpresa.direccion = req.body.direccion),
-            (buscarEmpresa.telefono = req.body.telefono),
-            (buscarEmpresa.propietario = req.body.propietario),
-            await buscarEmpresa.save()
           res.json({ buscarEmpresa });
         } else {
           res.json({
             mensaje: `La empresa con nit: ${id} no se encuentra en la base de datos`,
           });
         }
-      },
+      } catch (error) {
+        res.status(500).json({ mensaje: "Hubo un error al actualizar la empresa",error });
+      }
+    },
+    
       deleteEmpresa: async (req, res) => {
         const { id } = req.params;
         const eliminado = await Empresa.findOneAndDelete({ _id: id });
