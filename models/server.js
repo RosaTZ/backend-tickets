@@ -1,4 +1,5 @@
 import express from "express"
+import administrador from "../routes/administrador.js"
 import conductor from "../routes/conductor.js"
 import empresa from "../routes/empresa.js"
 import revision from "../routes/revision.js"
@@ -24,6 +25,7 @@ class Server{
       })
   }
     routes(){
+        this.app.use('/api/administrador',administrador)
         this.app.use('/api/conductor',conductor)
         this.app.use('/api/empresa',empresa)
         this.app.use('/api/revision',revision)
