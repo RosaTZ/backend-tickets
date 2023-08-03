@@ -16,7 +16,6 @@ const router = Router()
     check("cliente",'No es un ID válido').isMongoId(),
     check("vehiculo",'No es un ID válido').isMongoId(),
     check("ruta",'No es un ID válido').not().isMongoId(),
-    // check("empresa").custom(httpTicket.existeHolderById),
     check("empresa",'No es un ID válido').isMongoId(),
     validarCampos
   ], httpTicket.postTicket)

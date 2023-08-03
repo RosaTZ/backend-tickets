@@ -10,7 +10,7 @@ const router= Router()
     check("matricula","Matricula requerida").not().isEmpty(),
     check("matricula","La matricula debe tener 13 digitos").isLength({min:9,max:13}),
     check("placa","campo requerido").not().isEmpty(),
-    check("placa","La placa debe tener 6 digitos").isLength({min:6,max:6}),
+    check("placa","La placa debe tener 6 digitos").isLength({min:7,max:7}),
     check("num_vehiculo","Falta el numero del vehiculo").not().isEmpty(),
     check("num_vehiculo","El número del vehiculo debe tener minimo 3 digitos y maximo 4 digitos").isLength({min:3,max:4}),
     check("propietario","Ingrese el propietario del vehiculo").not().isEmpty(),

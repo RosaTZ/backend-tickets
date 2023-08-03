@@ -35,7 +35,13 @@ const httpTicket = {
     putTicket: async (req,res)=>{
      const id= req.params.id;
      const ticketActualizado={
+      fecha_venta:req.body.fecha_venta,
       fecha_salida : req.body.fecha_salida,
+      hora_salida: req.body.hora_salida,
+      duracion:req.body.duracion,
+      cliente: req.body.cliente,
+      vehiculo: req.body.vehiculo,
+      ruta:req.body.ruta,
       numero_puesto: req.body.numero_puesto
      }
      try {

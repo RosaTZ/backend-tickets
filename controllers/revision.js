@@ -31,7 +31,9 @@ const httpRevisiones = {
       const id = req.params.id
       const revisionActualizada={
         tecnomecanica : req.body.tecnomecanica,
-        fecha_proxima_revision : req.body.fecha_proxima_revision
+        fecha_revision:req.body.fecha_revision,
+        fecha_proxima_revision : req.body.fecha_proxima_revision,
+        descripcion:req.body.descripcion
       }
       try {
         const buscarRevision= await Revision.findByIdAndUpdate(id, revisionActualizada);

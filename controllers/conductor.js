@@ -7,9 +7,9 @@ import Conductor from "../models/conductor.js"
 const httpConductor = {
     postConductor: async (req, res) => {
       const { cedula,nombre, apellidos, telefono, licencia,categoria_licencia,fecha_vencimiento, 
-        fecha_nacimiento, direccion, estado_civil,estado, seguro:{tipo_seguro, aseguradora, valor, descripcion}} = req.body
+        fecha_nacimiento, direccion, estado_civil,estado} = req.body
       const conductor = await Conductor({  cedula,nombre, apellidos, telefono, licencia,categoria_licencia,fecha_vencimiento, 
-        fecha_nacimiento, direccion, estado_civil,estado, seguro:{tipo_seguro, aseguradora, valor, descripcion}})
+        fecha_nacimiento, direccion, estado_civil,estado})
       await conductor.save()
       res.json({
         mensaje: "1 registro insertado!!",
@@ -34,8 +34,13 @@ const httpConductor = {
     putConductor: async (req,res)=>{
 const id=req.params.id;
 const conductorActualizado={
+  cedula: req.body.cedula,
+  nombre: req.body.apellidos,
   telefono : req.body.telefono,
   licencia : req.body.licencia,
+  categoria_licencia: req.body.categoria_licencia,
+  fecha_vencimiento: req.body.fecha_vencimiento,
+  fecha_nacimiento:req.body.fecha_nacimiento,
   direccion : req.body.direccion,
   estado_civil : req.body.estado_civil,
 }

@@ -18,8 +18,7 @@ const router= Router()
    check("fecha_vencimiento","Fecha de vencimiento de la licencia requerida").not().isEmpty().isDate(),
    check("fecha_nacimiento","Fecha de nacimiento requerida").not().isEmpty().isDate(),
    check("direccion","Direccion requerida").not().isEmpty(),
-   check("estado_civil","Estado civil requerido").not().isEmpty(),
-   check("seguro","El seguro es obligatorio").not().isEmpty() , validarCampos
+   check("estado_civil","Estado civil requerido").not().isEmpty(),validarCampos
  ] , httpConductor.postConductor)
 
   router.get("/",httpConductor.getConductor)

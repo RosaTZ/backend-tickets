@@ -12,12 +12,6 @@ const conductorSchema=new mongoose.Schema({
     direccion : {type:String},
     estado_civil : {type:String},
     estado:{type:Number,require:true},
-    seguro:{
-        tipo_seguro : {type:String},
-        aseguradora : {type:String},
-        valor: {type:Number},
-        descripcion: {type:String},
-    },
     createdAt :{ type : Date , default : Date.now}
 })
 export default mongoose.model("Conductor",conductorSchema)

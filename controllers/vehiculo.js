@@ -48,10 +48,13 @@ const httpVehiculo = {
   putVehiculo: async (req, res) =>{
     const id= req.params.id;
     const vehiculoActualizado={
+      matricula:req.body.matricula,
       placa:req.body.placa,
       num_vehiculo : req.body.num_vehiculo,
-      propietario : req.body.propietario
-      
+      propietario : req.body.propietario,
+      puestos:req.body.puestos,
+      conductor_id:req.body.conductor_id,
+      revision_id:req.body.revision_id
     }
     try {
       const buscarVehiculo= await Vehiculo.findByIdAndUpdate(id,vehiculoActualizado);
