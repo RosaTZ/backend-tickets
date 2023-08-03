@@ -5,7 +5,7 @@ const vehiculoSchema = new mongoose.Schema({
   placa:{type: String},
   num_vehiculo: { type: String, unique: true },
   propietario: { type: String, default: "empresa viajes" },
-  estado:{type:Number},
+  estado:{type:Number, default:1},
   puestos:{type:Number},
   createdAt: { type: Date, default: Date.now },
   conductor_id: { type: mongoose.Schema.Types.ObjectId, ref: "Conductor", require:true },

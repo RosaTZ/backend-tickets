@@ -6,7 +6,7 @@ const ticketSchema=new mongoose.Schema({
     numero_puesto:{type:String,require:true},
     hora_salida:{type:Date,require:true},
     duracion:{type:Date,require:true},
-    estado:{type:Number,require:true},
+    estado:{type:Number,default:1,require:true},
     createdAt :{ type : Date, default : Date.now},
     cliente:{type:mongoose.Schema.Types.ObjectId,ref:'Cliente',require:true},
     vehiculo:{type:mongoose.Schema.Types.ObjectId,ref:'Vehiculo',require:true},

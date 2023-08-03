@@ -5,7 +5,7 @@ const clienteSchema= new mongoose.Schema({
     nombre :{type:String},
     apellidos :{type:String},
     telefono : {type:String},
-    estado:{type:Number,require:true},
+    estado:{type:Number,default:1,require:true},
     createdAt :{ type : Date , default : Date.now}
 })
 
